@@ -9,55 +9,56 @@ df = pd.read_csv('data/kc_house_data.csv')
 # Para verificar os tipos das variáveis das colunas
 #print(df.dtypes)
 
-# Primeiras Perguntas dos CEO
+print("Primeiras Perguntas dos CEO da House Rocket")
 
 # 1- Quantas casas estão disponíveis para comprar?
-print("\nQuantidade de casas disponíveis para compra: {}".format(df.shape[0]))
+
+print("1- Quantidade de casas disponíveis para compra: {}".format(df.shape[0]))
 print("\n")
 
 # 2- Quantos atributos as casas possuem?
-print("\nQuantidade de atributos as casas possuem: {}".format(df.shape[1]))
+print("2- Quantidade de atributos as casas possuem: {}".format(df.shape[1]))
 print("\n")
 
 # 3- Quais são os atributos das casas?
-print("\nOs atributos são: {}".format(df.columns))
+print("3- Os atributos são: {}".format(df.columns))
 print("\n")
 
 # 4- Qual a casa mais cara ( casa com o maior valor de venda)?
 #preciso que mostre o ID da casa
 sales = df[['id','price']].sort_values('price', ascending=False)
-print("\n A casa com o maior valor de venda é \n {}".format(sales.head(1)))
+print("4- A casa com o maior valor de venda é \n {}".format(sales.head(1)))
 print("\n")
 
 
 # 5- Qual a casa com o  maior número de quartos?
 bedroom = df[['id','bedrooms']].sort_values('bedrooms',ascending=False)
-print("\n A casa com o maior quantidade de quartos: \n {}".format(bedroom.head(1)))
+print("5- A casa com o maior quantidade de quartos: \n {}".format(bedroom.head(1)))
 print("\n")
 
 # 6- Qual a soma total de quartos do conjunto de dados?
-print('Total de quartos que tem no dataset: {}'.format(df['bedrooms'].sum()))
+print(' 6- Total de quartos que tem no dataset: {}'.format(df['bedrooms'].sum()))
 print("\n")
 
 # 7- Quantas casas possuem 2 banheiros?
 a = df.query('bathrooms == 2')['bathrooms'].count()
-print('Quantidade de casas com 2 banheiros no dataset: {}'.format(a))
+print(' 7- Quantidade de casas com 2 banheiros no dataset: {}'.format(a))
 print("\n")
 
 # 8- Qual o preço médio de todas as casas no conjunto de dados?
 b = df['price'].mean()
-print('Preço médio de todas as casas: {}'.format(round(b,2)))
+print('8- Preço médio de todas as casas: {}'.format(round(b,2)))
 print("\n")
 
 # 9- Qual o preço médio de casas com 2 banheiros?
 c = df.loc[df['bathrooms'] == 2, 'price'].mean()
-print('Preço médio das casas com 2 banheiro: {}'.format(round(c,2)))
+print('9- Preço médio das casas com 2 banheiro: {}'.format(round(c,2)))
 print("\n")
 
 
 # 10- Qual o preço mínimo entre as casas com 3 quartos?
 d = df.query('bedrooms == 3')['price'].min()
-print('Preço minimo em casas com dois andares: {}'.format(round(d,2)))
+print('10- Preço minimo em casas com dois andares: {}'.format(round(d,2)))
 print("\n")
 
 # 11- Quantas casas possuem mais de 300 metros quadrados na sala de estar?
@@ -80,4 +81,4 @@ print('Casas com vista para o mar e com 3 quartos: {}'.format(f))
 print("\n")
 
 # 15- Das casas com mais de 300 metros quadrados de sala de estar, quantas tem mais de 2 banheiros banheiros?
-print('Total de com mais de 2 banheiros: {}'.format(df[(df['m2_living'] > 300) & (df['bathrooms']> 2)].shape[0]))
+print('Total de casas com mais de 2 banheiros e que tenha 300 m² de sala de estar: {}'.format(df[(df['m2_living'] > 300) & (df['bathrooms']> 2)].shape[0]))
