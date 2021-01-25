@@ -1,9 +1,6 @@
 import pandas as pd
 import plotly.express as px
 
-
-
-
 df = pd.read_csv('data/kc_house_data.csv')
 print(df.head())
 print(df.columns) # Ver os índices das colunas
