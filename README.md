@@ -33,4 +33,10 @@ Este conjunto de dados contém preços de venda de casas para King County, que i
 - <b>sqft_living15</b>: A metragem quadrada do espaço interno de habitação para os 15 vizinhos mais próximos 
 - <b>sqft_lot15</b>: A metragem quadrada dos lotes de terreno dos 15 vizinhos mais próximos.
 
+# 4.0 Próximos Etapas
+
+- [ ] Atualizar Layout dos botões dos gráficos 
+- [ ] Exercícios aula 05
+- [ ] Apresentação das primeiras análises realizadas
+
 
