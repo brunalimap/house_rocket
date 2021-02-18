@@ -5,10 +5,13 @@ Este conjunto de dados contém preços de venda de casas para King County, que i
 # 2.0- Tópicos
 - [Exercício- Aula 01](https://github.com/brunalimap/house_rocket/blob/main/notebooks/aula_python01.py)
    
-   skills: Pandas
+   skills: Biblioteca Pandas.
    
 - [Exercício- Aula 02](https://github.com/brunalimap/house_rocket/blob/main/notebooks/aula_python02.py)
-- [Exercício- Aula 03](https://github.com/brunalimap/house_rocket/blob/main/notebooks/aula_python03.ipynb) 
+
+   skills: Biblioteca Pandas, Biblioteca Plotly,Mapas.
+   
+- [Exercício- Aula 03](https://github.com/brunalimap/house_rocket/blob/main/notebooks/aula_python03.ipynb)
 - [Exercício- Aula 04](https://github.com/brunalimap/house_rocket/blob/main/notebooks/aula_python04.ipynb)
 - [Exercício- Aula 05](https://github.com/brunalimap/house_rocket/blob/main/notebooks/aula_python05.ipynb)
 - [Exercício- Aula 06](https://github.com/brunalimap/house_rocket/blob/main/notebooks/aula_python06.py)
