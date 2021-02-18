@@ -3,14 +3,8 @@
 Este conjunto de dados contém preços de venda de casas para King County, que inclui Seattle. Inclui casas vendidas entre maio de 2014 e maio de 2015.
 
 # 2.0- Tópicos
-- [Exercício- Aula 01](https://github.com/brunalimap/house_rocket/blob/main/notebooks/aula_python01.py)
-   
-   skills: Biblioteca Pandas.
-   
-- [Exercício- Aula 02](https://github.com/brunalimap/house_rocket/blob/main/notebooks/aula_python02.py)
-
-   skills: Biblioteca Pandas, Biblioteca Plotly,Mapas.
-   
+- [Exercício- Aula 01](https://github.com/brunalimap/house_rocket/blob/main/notebooks/aula_python01.py) 
+- [Exercício- Aula 02](https://github.com/brunalimap/house_rocket/blob/main/notebooks/aula_python02.py)   
 - [Exercício- Aula 03](https://github.com/brunalimap/house_rocket/blob/main/notebooks/aula_python03.ipynb)
 - [Exercício- Aula 04](https://github.com/brunalimap/house_rocket/blob/main/notebooks/aula_python04.ipynb)
 - [Exercício- Aula 05](https://github.com/brunalimap/house_rocket/blob/main/notebooks/aula_python05.ipynb)
@@ -45,6 +39,7 @@ Este conjunto de dados contém preços de venda de casas para King County, que i
  
 - [x] Exercícios aula 05
 - [x] Exercícios aula 06
+- [ ] Exercícios aula 07
 - [ ] Apresentação das primeiras análises realizadas (streamlit)
 
 
