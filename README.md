@@ -9,6 +9,7 @@ Este conjunto de dados contém preços de venda de casas para King County, que i
 - [Exercício- Aula 04](https://github.com/brunalimap/house_rocket/blob/main/notebooks/aula_python04.ipynb)
 - [Exercício- Aula 05](https://github.com/brunalimap/house_rocket/blob/main/notebooks/aula_python05.ipynb)
 - [Exercício- Aula 06](https://github.com/brunalimap/house_rocket/blob/main/notebooks/aula_python06.py)
+- [Exercício- Aula 07](https://github.com/brunalimap/house_rocket/blob/main/notebooks/aula_python07.py)
 
 
 # 3.0- Biblioteca dos Dados
@@ -35,11 +36,17 @@ Este conjunto de dados contém preços de venda de casas para King County, que i
 - <b>sqft_living15</b>: A metragem quadrada do espaço interno de habitação para os 15 vizinhos mais próximos 
 - <b>sqft_lot15</b>: A metragem quadrada dos lotes de terreno dos 15 vizinhos mais próximos.
 
-# 4.0 Próximos Etapas
+# 4.0 Solução 
+
+Para conferir as análises realizadas deste dataset é só acessar o link: https://analytics-house-rockets.herokuapp.com/
+
+# 5.0 Próximos Etapas
  
 - [x] Exercícios aula 05
 - [x] Exercícios aula 06
-- [ ] Exercícios aula 07
-- [ ] Apresentação das primeiras análises realizadas (streamlit)
+- [x] Exercícios aula 07
+- [ ] Exercícios aula 08
+- [x] Apresentação das primeiras análises realizadas (streamlit)
+- [ ] Melhorias na apresentação das Análises no Streamlit
 
 
