@@ -1,11 +1,16 @@
-import geopandas
 import folium
-import numpy as np
-import pandas as pd
-import streamlit as st
+import geopandas
 
-from streamlit_folium import folium_static
+
+import numpy          as np
+import pandas         as pd
+import streamlit      as st
+import plotly_express as px
+
+from datetime          import datetime
+from streamlit_folium  import folium_static
 from folium.plugins    import MarkerCluster
+
 
 
 #Arruma o layout do gráfico
@@ -43,7 +48,9 @@ data['date'] = pd.to_datetime(data['date']).dt.strftime('%Y-%m-%d')
 # add new features
 data['price_m2'] = data['price']/ data['sqft_lot']
 
+#===============
 # Data Overview
+#===============
 
 f_attributes = st.sidebar.multiselect('Enter columns',data.columns)
 f_zipcode = st.sidebar.multiselect(
@@ -66,6 +73,7 @@ else:
     data = data.copy()
 
 c1,c2 = st.beta_columns((1,1))
+
 #Avarage metrics
 df1 = data[['id','zipcode']].groupby('zipcode').count().reset_index()
 df2 = data[['price','zipcode']].groupby('zipcode').mean().reset_index()
@@ -82,7 +90,9 @@ df.columns = ['ZIPCODE','TOTAL HOUSES','PRICE','SQRT LIVING','PRICE/M2']
 c1.header('Average Values')
 c1.dataframe(df,height=400)
 
+#======================
 # Statistic Descriptive
+#======================
 
 num_attributes = data.select_dtypes(include=['int64','float64'])
 
@@ -99,9 +109,9 @@ df1.columns = ['attributes', 'min', 'max', 'media', 'mediana', 'std']
 c2.header('Descriptive Analysis')
 c2.dataframe(df1,height=400)
 
-
+#===============
 # Portfólio 
-
+#===============
 st.title('Region Overview')
 
 c1,c2 = st.beta_columns((1,1))
@@ -151,4 +161,120 @@ region_price_map.choropleth(data =df,
 
 with c2:
     folium_static(region_price_map)
+
+
+#===================================================
+# Distribuição dos imóveis por categorias comerciais 
+#===================================================
+
+st.sidebar.title('Commercial Options')
+st.title('Commercial Attributes')
+
+#----------- Average Price per Year
+#title
+st.header('Average Price per Year Built')
+
+#filters
+min_year_built = int(data['yr_built'].min())
+max_year_built = int(data['yr_built'].max())
+
+st.sidebar.subheader('Select Max Year Built')
+f_year_built = st.sidebar.slider('Year Built',min_year_built,max_year_built,min_year_built )
+
+
+#data selection
+df = data[['yr_built', 'price']].groupby('yr_built').mean().reset_index()
+
+# plot
+fig = px.line(df, x='yr_built', y='price')
+st.plotly_chart (fig,use_container_width=True)
+
+#----------- Average Price per Day
+
+#title
+st.header('Average Price per Day')
+
+#filters
+min_date = datetime.strptime(data['date'].min(),'%Y-%m-%d')
+max_date = datetime.strptime(data['date'].max(), '%Y-%m-%d')
+
+f_date = st.sidebar.slider('Date',min_date,max_date,min_date)
+
+#data selection
+data['date'] = pd.to_datetime(data['date'])
+df = data.loc[data['date'] < f_date]
+df = data[['date', 'price']].groupby('date').mean().reset_index()
+
+#plot
+fig = px.line(df, x='date', y='price')
+st.plotly_chart (fig,use_container_width=True)
+
+#----------- Histogram
+
+st.header('Price Distribution')
+st.sidebar.subheader('Select Max Price')
+
+#filter
+min_price = int(data['price'].min())
+max_price = int(data['price'].max())
+avg_price = int(data['price'].mean())
+
+#data selection
+f_price = st.sidebar.slider('Price',min_price,max_price,avg_price)
+df = data.loc[data['price'] < f_price]
+
+#plot
+fig = px.histogram(df,x='price',nbins=50)
+st.plotly_chart(fig, use_container_width=True)
+
+#===================================================
+# Distribuição dos imóveis por categorias físicas 
+#===================================================
+st.sidebar.title('Attributes Options')
+st.title('House Attributes')
+
+#filters
+f_bedrooms = st.sidebar.selectbox('Max number of bedrooms',sorted(set(data['bedrooms'].unique())))
+
+f_bathrooms = st.sidebar.selectbox('Max number of bathrooms',sorted(set(data['bathrooms'].unique())))
+
+f_floors = st.sidebar.selectbox('Max number of floor',sorted(set(data['floors'].unique())))
+
+f_waterview = st.sidebar.selectbox('Only houses with waterview',sorted(set(data['waterfront'].unique())))
+
+# grid graph
+
+c1,c2 = st.beta_columns(2)
+
+#House per Bedrooms
+c1.header('Houses per bedrooms')
+df = data[data['bedrooms'] < f_bedrooms]
+fig = px.histogram(df,x='bedrooms',nbins=20)
+c1.plotly_chart(fig,use_container_width=True)
+
+#House per Bathrooms
+c2.header('Houses per bathrooms')
+df = data[data['bathrooms'] < f_bathrooms]
+fig = px.histogram(df,x='bathrooms',nbins=20)
+c2.plotly_chart(fig,use_container_width=True)
+
+c1, c2 = st.beta_columns(2)
+
+#House per Floors
+c1.header('Houses per floor')
+df = data[data['floors'] < f_floors]
+fig = px.histogram(data,x='floors',nbins=20)
+c1.plotly_chart(fig,use_container_width=True)
+
+#House per Water View
+
+c2.header('House per Water View')
+if f_waterview:
+    df = data[data['waterfront'] ==1]
+
+else:
+    df = data.copy()
+
+fig = px.histogram(df,x='waterfront', nbins=10)
+c2.plotly_chart(fig,use_container_width=True)
 
