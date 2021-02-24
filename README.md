@@ -40,7 +40,7 @@ Este conjunto de dados contém preços de venda de casas para King County, que i
 
 Para conferir as análises realizadas deste dataset é só acessar o link: https://analytics-house-rockets.herokuapp.com/
 
-# 5.0 Próximos Etapas
+# 5.0 Próximas Etapas
  
 - [x] Exercícios aula 05
 - [x] Exercícios aula 06
