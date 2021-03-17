@@ -45,7 +45,6 @@ Para conferir as análises realizadas deste dataset é só acessar o link: https
 - [x] Exercícios aula 05
 - [x] Exercícios aula 06
 - [x] Exercícios aula 07
-- [x] Exercícios aula 08
 - [x] Apresentação das primeiras análises realizadas (streamlit)
 
 
