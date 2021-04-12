@@ -1,7 +1,7 @@
 import pandas as pd
 import plotly.express as px
 
-df = pd.read_csv('data/kc_house_data.csv')
+df = pd.read_csv('house_rocket/data/kc_house_data.csv')
 print(df.head())
 print(df.columns) # Ver os índices das colunas
 print(df['date'])
@@ -11,7 +11,7 @@ print(df['date'])
 #print(df.shape)
 #print(df.dtypes)
 
-df['date'] = pd.to_datetime(df['date'], errors='coerce')
+df['date'] = pd.to_datetime(df['date'])
 print(df['date'])
 
 # 1. Crie um anova coluna chamada: "house_age"
@@ -48,12 +48,13 @@ print('\n')
 # - Se o valor da coluna "condition" for igual à 5 => 'good'
 
 print('Questão 3')
-df['condition_type'] = ''
-df.loc[df['condition'] <= 2,'condition_type'] = 'bad'
-df.loc[df['condition'] == 3,'condition_type'] = 'regular'
-df.loc[df['condition'] == 4,'condition_type'] = 'regular'
-df.loc[df['condition'] == 5,'condition_type'] = 'good'
+df['condition_type'] = df['condition'].apply(lambda x: 'bad' if x <= 2 else 'regular' if (x==3) | (x==4) else 'good' )
+#df.loc[df['condition'] <= 2,'condition_type'] = 'bad'
+#df.loc[df['condition'] == 3,'condition_type'] = 'regular'
+#df.loc[df['condition'] == 4,'condition_type'] = 'regular'
+#df.loc[df['condition'] == 5,'condition_type'] = 'good'
 print(df.sample(5))
+print(df['condition_type'].value_counts())
 print('\n')
 
 
@@ -70,25 +71,25 @@ print('\n')
 #print(df.columns)
 
 # 6. Modifique o TIPO da coluna "yr_built" para DATE
-df['yr_built'] = pd.to_datetime(df['yr_built'],format='%Y',errors='coerce')
+df['yr_built'] = pd.to_datetime(df['yr_built'],format='%Y')
 print('\n')
 
 # 7. Modifique o TIPO da coluna "yr_renovated" para DATE
 print('Questão 7')
-df['yr_renovated'] = pd.to_datetime(df['yr_renovated'],format='%Y',errors='coerce')
+df['yr_renovated'] = df['yr_renovated'].apply(lambda x: pd.to_datetime('1970-01-01',format='%Y-%m-%d') if x==0 else pd.to_datetime(x,format='%Y'))
 print(df.dtypes)
 print('\n')
 
 # 8. Qual a data mais antiga de construção de um imóvel?
 print('Questão 8')
-a = df[['id','yr_built']].sort_values('yr_built', ascending=True)
+a = df[['id','yr_built']].min()
 print(a)
 print('\n')
 
 # 9. Qual a data mais antiga de renovação de um imóvel? (Preciso voltar nessa)
 
 print('Questão 9')
-b = df[['id','yr_renovated']].sort_values('yr_renovated', ascending=True)
+b = df.loc[df['yr_renovated'] > pd.to_datetime('1900-01-01',format='%Y-%m-%d'),'yr_renovated'].min()
 print(b)
 print('\n')
 
@@ -167,7 +168,7 @@ print('\n')
 
 # 19. Salve um arquivo .csv com somente as colunas do item 10 ao 17
 df1 = df.iloc[:,10:18]
-df1.to_csv('data/arquivo01.csv')
+df1.to_csv('house_rocket/data/arquivo01.csv')
 print('\n')
 
 # 20. Modifique a cor dos pontos no mapa de "pink" para "verde-escuro"
@@ -184,7 +185,7 @@ hover_data=['price'],
 color_discrete_sequence=['darkgreen'],
 zoom=3,
 mapbox_style='open-street-map',
-height=300)
+height=400)
 
 # definindo as margens do mapa
 maps_v1.update_layout(margin={'r':0, 't':0, 'l':0, 'b':0})
@@ -194,6 +195,6 @@ maps_v1.update_layout(margin={'r':0, 't':0, 'l':0, 'b':0})
 maps_v1.show()
 
 #salvando o mapa
-maps_v1.write_html('img/maps_v1.html')
+maps_v1.write_html('house_rocket/img/maps_v1.html')
 
 
