@@ -248,7 +248,7 @@ def attributes_distribution(data):
     #House per Floors
     c1.header('Houses per floor')
     df = data[data['floors'] < f_floors]
-    fig = px.histogram(data,x='floors',nbins=20)
+    fig = px.histogram(df,x='floors',nbins=20)
     c1.plotly_chart(fig,use_container_width=True)
 
     #House per Water View
