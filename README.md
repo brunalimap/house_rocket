@@ -42,7 +42,7 @@ O objetivo final deste curso é entender os conceitos de manipulação de tabela
 
 <img align="center" height="700" width="1200" src="https://github.com/brunalimap/house_rocket/blob/main/img/app_streamlit.gif">
 
-<b>Observação:</b> Pode demorar um pouco para carregar a página, pois estou usando uma camada gratuita do Heroku e nesta camada o aplicativo hiberna após 30 min de inatividade.
+<b>Observação:</b> A página pode demorar um pouco para carregar, pois estou usando uma camada gratuita do Heroku e nesta camada o aplicativo hiberna após 30 min de inatividade.
 
 # 5.0 Próximas Etapas
  
