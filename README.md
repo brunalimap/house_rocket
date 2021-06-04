@@ -40,7 +40,7 @@ Este conjunto de dados contém preços de venda de casas para King County, que i
 
 O objetivo final deste curso é entender os conceitos de manipulação de tabelas com python e a construção de visualizações com o intuito de responder questões de negócio e a construção de uma página usando a biblioteca do streamlit. E para visualizar o resultado foi realizado o deploy no Heroku que pode ser acessado através do link  construídos deste dataset é necessário acessar o link: https://analytics-house-rockets.herokuapp.com/ 
 
-<img align="center" height="650" width="1200" src="https://github.com/brunalimap/house_rocket/blob/main/img/app_streamlit.gif">
+<img align="center" height="600" width="1200" src="https://github.com/brunalimap/house_rocket/blob/main/img/app_streamlit.gif">
 
 <b>Observação:</b> A página pode demorar um pouco para carregar, pois estou usando uma camada gratuita do Heroku e nesta camada o aplicativo hiberna após 30 min de inatividade.
 
